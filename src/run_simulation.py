@@ -12,7 +12,8 @@ import sys
 import numpy as np
 import pandas as pd
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))  # Adds the parent directory
+base_path = str(Path(__file__).resolve().parent.parent)
+sys.path.append(base_path)  # Adds the parent directory
 
 
 from out import get_output_path
@@ -413,8 +414,8 @@ def _main(*args, **kwargs):
     for simulation_num in range(2):
 
         prefix_name = f"simulation_"
-        if parsed_args.ename is not None:
-            prefix_name = prefix_name + f"{parsed_args.ename}"
+        # if parsed_args.ename is not None:
+        #     prefix_name = prefix_name + f"{parsed_args.ename}"
 
         script_name = (
             f'{prefix_name}'
@@ -438,8 +439,6 @@ def _main(*args, **kwargs):
                 setup_script = setup_script.replace(f'{{{k}}}', str(v).lower())
             else:
                 setup_script = setup_script.replace(f'{{{k}}}', f'{v!r}')
-
-        print(f'{format_matrix_string(hole_array)}')
 
         common_args = dict(
             parameters=format_matrix_string(hole_array),
@@ -468,22 +467,25 @@ def _main(*args, **kwargs):
     location.mkdir(exist_ok=True)
 
     #move lsf scripts we created into directory
-    from pathlib import Path
+    # Construct paths correctly
+    source_path = Path(__file__).resolve().parent.parent / "out" / "lsf"
+    destination_path = source_path / script_name  # Avoid string concatenation
 
-    source_folder = Path("C:/Users/harry/OneDrive/Documents/NonReciprocalRingResonators/out/lsf/")
-    destination_folder = Path("C:/Users/harry/OneDrive/Documents/NonReciprocalRingResonators/out/lsf/simulation_1_7806f8af_startup/")
-    file_prefix = "simulation_1_7806f8af_startup_"
+    source_folder = Path(source_path)
+    destination_folder = Path(destination_path)
 
-    destination_folder.mkdir(parents=True, exist_ok=True)  # Ensure the destination folder exists
+    file_prefix = script_name  # No trailing backslash
 
-    for file in source_folder.glob(file_prefix + "*"):
-        if file.is_file():  # ✅ Check if it’s a file before moving
+    # Ensure the destination folder exists
+    destination_folder.mkdir(parents=True, exist_ok=True)
+
+    # Move files with correct glob pattern
+    for file in source_folder.glob(file_prefix + "*"):  # Matches files starting with script_name
+        if file.is_file():  
             file.rename(destination_folder / file.name)  
             print(f"Moved: {file} → {destination_folder}")
         else:
             print(f"Skipping directory: {file}")
-            return
-
 
     print(f'{location}')
     data_location.mkdir(exist_ok=True)

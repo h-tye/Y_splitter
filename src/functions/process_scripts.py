@@ -89,8 +89,6 @@ def process_scripts(
     else:
         name = f'{script_name}_{index}_{point_str}'
 
-    print(f"Creating file: {name}.lsf")
-
     scripts = [START_SCRIPT, setup_script, PRE_RUN_SAVE_SCRIPT, RUN_SCRIPT, POST_RUN_SAVE_SCRIPT, END_SCRIPT]
 
     for i in range(len(scripts)):
