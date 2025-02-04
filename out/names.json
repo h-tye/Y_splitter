@@ -1,0 +1,19 @@
+{
+    "7806f8af": {
+        "bend_insertion_loss": 0.0377,
+        "bend_n_eff": 2.262,
+        "bend_n_grp": 3.484,
+        "components": [
+            "['r']:['']:['coupling']",
+            "['r']:['']:['phase']:0"
+        ],
+        "dc_insertion_loss": 0.0,
+        "laser_power": 1,
+        "straight_n_eff": null,
+        "straight_n_grp": null,
+        "straight_waveguide_length": null,
+        "wavelength": null,
+        "wavelength_gap": null,
+        "wg_insertion_loss": null
+    }
+}
