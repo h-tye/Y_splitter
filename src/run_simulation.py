@@ -7,12 +7,13 @@ import json
 from hashlib import sha256
 from typing import Union, Dict, List, Optional
 from pathlib import Path
+import sys
 
 import numpy as np
 import pandas as pd
 
-import sys
-sys.path.append("C:/Users/harry/OneDrive/Documents/NonReciprocalRingResonators")
+sys.path.append(str(Path(__file__).resolve().parent.parent))  # Adds the parent directory
+
 
 from out import get_output_path
 from src.functions.__const__ import HASH_LENGTH
