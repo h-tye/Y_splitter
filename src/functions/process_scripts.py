@@ -13,7 +13,7 @@ from src.lsf_scripts import get_lsf_scripts_path
 START_SCRIPT = r'''
     addpath("{lsf_scripts_path}");
     autosaveoff;
-    switchtodesign;
+    # switchtodesign;
     groupscope("::Root Element");
     deleteall;
     if (exist("preserve_me")) {
@@ -24,9 +24,9 @@ START_SCRIPT = r'''
     clearfunctions;
 
     main__ = "python";
-    setnamed("::Root Element", "bitrate", 2.5e+10);
-    setnamed("::Root Element", "time window", 5e-9);
-    setnamed("::Root Element", "sample rate", 2e+12);
+    # setnamed("::Root Element", "bitrate", 2.5e+10);
+    # setnamed("::Root Element", "time window", 5e-9);
+    # setnamed("::Root Element", "sample rate", 2e+12);
 '''
 
 PRE_RUN_SAVE_SCRIPT = r'''
@@ -34,21 +34,21 @@ PRE_RUN_SAVE_SCRIPT = r'''
 '''
 
 RUN_SCRIPT = r'''
-    save("{results_path}/{name}.ipc");
+    save("{results_path}/{name}.fsp");
     run;
-    save("{results_path}/{name}.ipc");
+    save("{results_path}/{name}.fsp");
 '''
 
 POST_RUN_SAVE_SCRIPT = r'''
     save_properties_results;
     results = get_all_results();
-    properties = get_all_element_properties("");
-    matlabsave("{results_path}/{name}.mat", results, properties);
+    #properties = get_all_element_properties("");
+    matlabsave("{results_path}/{name}.mat", results);
 '''
 
 END_SCRIPT = r'''
-    switchtodesign;
-    groupscope("::Root Element");
+    # switchtodesign;
+    # groupscope("::Root Element");
     deleteall;
     if (exist("preserve_me")) {
         clearexcept(preserve_me);
@@ -57,7 +57,7 @@ END_SCRIPT = r'''
     }
     clearfunctions;
 
-    save("{results_path}/{name}.ipc");
+    save("{results_path}/{name}.fsp");
     write("{results_path}/{name}.completed.txt", "completed", "overwrite");
     # exit;
 '''
