@@ -410,7 +410,7 @@ def _main(*args, **kwargs):
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ]
     ])
 
-    for simulation_num in range(20):
+    for simulation_num in range(2):
 
         prefix_name = f"simulation_"
         if parsed_args.ename is not None:
