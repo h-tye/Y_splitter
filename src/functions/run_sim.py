@@ -24,8 +24,8 @@ def run_point(
         script_name=script_name,
     )
 
-    with lumapi.INTERCONNECT(hide=hide) as interconnect:
-        interconnect.eval(script)
+    with lumapi.FDTD(hide=hide) as varFDTD:
+        varFDTD.eval(script)
 
 
 def run_sweep(
