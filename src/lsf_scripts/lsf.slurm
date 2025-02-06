@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=@name@
 #SBATCH --output=slurm_%x_%A.log
-#SBATCH --mail-user=vis77@pitt.edu
+#SBATCH --mail-user=hit24@pitt.edu
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -10,7 +10,7 @@
 #SBATCH --cluster=smp
 #SBATCH --partition=smp
 #SBATCH --time=1-00:00:00
-#SBATCH --chdir="/ihome/nyoungblood/vis77"
+#SBATCH --chdir="/ihome/nyoungblood/hit24"
 #SBATCH --requeue
 
 source "${HOME}/.bashrc";

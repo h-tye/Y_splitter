@@ -168,23 +168,23 @@
     #define srating hole pattern
     holeArray = [ 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0;
+              0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
               0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0;
               1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1;
+              0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1;
               1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1;
               1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1;
               1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1;
+              1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0;
+              1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ];
     holeMatrix = holeArray;
 
@@ -230,18 +230,18 @@
 
 
 
-    # exportnetlist("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.spi");
+    # exportnetlist("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.spi");
 
 
-    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.fsp");
+    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.fsp");
     run;
-    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.fsp");
+    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.fsp");
 
 
     save_properties_results;
     results = get_all_results();
     #properties = get_all_element_properties("");
-    matlabsave("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.mat", results);
+    matlabsave("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.mat", results);
 
 
     # switchtodesign;
@@ -254,6 +254,6 @@
     }
     clearfunctions;
 
-    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.fsp");
-    write("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f802dee0.completed.txt", "completed", "overwrite");
+    save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.fsp");
+    write("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_f395b5b5.completed.txt", "completed", "overwrite");
     # exit;
