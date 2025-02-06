@@ -214,12 +214,6 @@ SETUP_SCRIPT = r'''
         }
     }
     
-    record_all = {record_all};
-    annotate_all = 3;
-
-    addproperty("::Root Element", "simulation_of", "String", type="String");
-    setnamed("::Root Element", "simulation_of", {simulation_of});
-    create_simulation;
 
 '''
 
