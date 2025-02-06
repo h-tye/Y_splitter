@@ -1,11 +1,13 @@
 autosaveoff;
-switchtodesign;
+# switchtodesign;
 groupscope("::Root Element");
 deleteall;
 clear;
 clearfunctions;
 
 error_msg = "start";
+
+#generate random job id
 for(0; true; 0) {
     if (length(error_msg) > 1){
         random_id = rand(1, 10000000, 2);
@@ -65,8 +67,8 @@ for(0; true; 0) {
         running_filename = replacestring(random_filename, ".run.lsf", "." + lumerical_id + ".running.lsf");
         completed_filename = replacestring(random_filename, ".run.lsf", ".completed.lsf");
 
-        try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".icp"));} catch(error_msg);
-        try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".ich"));} catch(error_msg);
+        try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".fsp"));} catch(error_msg);
+        # try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".ich"));} catch(error_msg);
         try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".log"));} catch(error_msg);
         print("Sqlite... " + running_filename);
         write(lumerical_id + ".run.txt", "Sqlite... " + running_filename, "append");
