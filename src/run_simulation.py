@@ -29,7 +29,6 @@ from src.functions.process_scripts import process_scripts
 from src.lsf_scripts import get_lsf_scripts_path
 
 SETUP_SCRIPT = r'''
-    deleteall;
     clear;
 
     #base simulation, this is a model of what "should" be created by our run_simulation script

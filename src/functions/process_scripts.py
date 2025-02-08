@@ -14,7 +14,7 @@ START_SCRIPT = r'''
     addpath("{lsf_scripts_path}");
     autosaveoff;
     # switchtodesign;
-    groupscope("::Root Element");
+    # groupscope("::Root Element");
     deleteall;
     if (exist("preserve_me")) {
         clearexcept(preserve_me);
@@ -59,7 +59,7 @@ END_SCRIPT = r'''
 
     save("{results_path}/{name}.fsp");
     write("{results_path}/{name}.completed.txt", "completed", "overwrite");
-    # exit;
+    exit;
 '''
 
 
