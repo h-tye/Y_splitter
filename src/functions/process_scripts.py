@@ -11,11 +11,11 @@ from src.functions.__const__ import HASH_LENGTH
 from src.lsf_scripts import get_lsf_scripts_path
 
 START_SCRIPT = r'''
-    addpath("{lsf_scripts_path}");
-    autosaveoff;
-    # switchtodesign;
-    # groupscope("::Root Element");
-    deleteall;
+    # addpath("{lsf_scripts_path}");
+    # autosaveoff;
+    # # switchtodesign;
+    # # groupscope("::Root Element");
+    # deleteall;
     if (exist("preserve_me")) {
         clearexcept(preserve_me);
     } else {
@@ -34,22 +34,22 @@ PRE_RUN_SAVE_SCRIPT = r'''
 '''
 
 RUN_SCRIPT = r'''
-    save("{results_path}/{name}.fsp");
-    run;
-    save("{results_path}/{name}.fsp");
+    # save("{results_path}/{name}.fsp");
+    # run;
+    # save("{results_path}/{name}.fsp");
 '''
 
 POST_RUN_SAVE_SCRIPT = r'''
-    save_properties_results;
-    results = get_all_results();
-    #properties = get_all_element_properties("");
-    matlabsave("{results_path}/{name}.mat", results);
+    # save_properties_results;
+    # results = get_all_results();
+    # #properties = get_all_element_properties("");
+    # matlabsave("{results_path}/{name}.mat", results);
 '''
 
 END_SCRIPT = r'''
     # switchtodesign;
     # groupscope("::Root Element");
-    deleteall;
+    # deleteall;
     if (exist("preserve_me")) {
         clearexcept(preserve_me);
     } else {
@@ -57,9 +57,9 @@ END_SCRIPT = r'''
     }
     clearfunctions;
 
-    save("{results_path}/{name}.fsp");
-    write("{results_path}/{name}.completed.txt", "completed", "overwrite");
-    exit;
+    # save("{results_path}/{name}.fsp");
+    # write("{results_path}/{name}.completed.txt", "completed", "overwrite");
+    # exit;
 '''
 
 

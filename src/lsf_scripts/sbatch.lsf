@@ -1,5 +1,4 @@
 autosaveoff;
-# switchtodesign;
 groupscope("::Root Element");
 deleteall;
 clear;
@@ -22,6 +21,8 @@ for(0; true; 0) {
         if (lumerical_id == "$SLURM_JOB_ID ") {lumerical_id = random_id;}
         error_msg = "";
     }
+
+    #parses and retrieves lsf files to be run
     number_of_lsf = 0;
     print("ls...");
     write(lumerical_id + ".run.txt", "ls...", "append");
@@ -51,16 +52,19 @@ for(0; true; 0) {
         }
     }
     
+    #gets random file to run
     random_filename = lsf_files{rand(1, number_of_lsf, 2)};
     running_filename = replacestring(random_filename, ".run.lsf", "." + lumerical_id + ".running.lsf");
     completed_filename = replacestring(random_filename, ".run.lsf", ".completed.lsf");
     error_msg = "";
+
+
     try {
         print("Starting... " + running_filename);
         write(lumerical_id + ".run.txt", "Starting... " + running_filename, "append");
         mv(random_filename, running_filename);
         preserve_me = lumerical_id + "\n" + random_filename;
-        feval(running_filename);
+        feval(running_filename); #actual evaluation
         preserve_me = splitstring(preserve_me, "\n");
         lumerical_id = preserve_me{1};
         random_filename = preserve_me{2};
@@ -68,7 +72,7 @@ for(0; true; 0) {
         completed_filename = replacestring(random_filename, ".run.lsf", ".completed.lsf");
 
         try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".fsp"));} catch(error_msg);
-        # try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".ich"));} catch(error_msg);
+        try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".ich"));} catch(error_msg);
         try {rm("@DataDirectoryLocation@/" + replacestring(random_filename, ".run.lsf", ".log"));} catch(error_msg);
         print("Sqlite... " + running_filename);
         write(lumerical_id + ".run.txt", "Sqlite... " + running_filename, "append");
