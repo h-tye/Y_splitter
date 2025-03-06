@@ -10,56 +10,17 @@ from out.results import get_results_path
 from src.functions.__const__ import HASH_LENGTH
 from src.lsf_scripts import get_lsf_scripts_path
 
-START_SCRIPT = r'''
-    # addpath("{lsf_scripts_path}");
-    # autosaveoff;
-    # # switchtodesign;
-    # # groupscope("::Root Element");
-    # deleteall;
-    if (exist("preserve_me")) {
-        clearexcept(preserve_me);
-    } else {
-        clear;
-    }
-    clearfunctions;
-
-    main__ = "python";
-    # setnamed("::Root Element", "bitrate", 2.5e+10);
-    # setnamed("::Root Element", "time window", 5e-9);
-    # setnamed("::Root Element", "sample rate", 2e+12);
-'''
-
-PRE_RUN_SAVE_SCRIPT = r'''
-    # exportnetlist("{results_path}/{name}.spi");
-'''
-
-RUN_SCRIPT = r'''
-    # save("{results_path}/{name}.fsp");
-    # run;
-    # save("{results_path}/{name}.fsp");
-'''
-
-POST_RUN_SAVE_SCRIPT = r'''
-    # save_properties_results;
-    # results = get_all_results();
-    # #properties = get_all_element_properties("");
-    # matlabsave("{results_path}/{name}.mat", results);
-'''
-
 END_SCRIPT = r'''
-    # switchtodesign;
-    # groupscope("::Root Element");
-    # deleteall;
-    if (exist("preserve_me")) {
-        clearexcept(preserve_me);
-    } else {
-        clear;
-    }
-    clearfunctions;
+    #file name formatting
+    filename = currentscriptname;
+    script_idx = findstring(filename, "Jay");
+    filename = substring(filename, script_idx);
 
-    # save("{results_path}/{name}.fsp");
-    # write("{results_path}/{name}.completed.txt", "completed", "overwrite");
-    # exit;
+    lms_file = replacestring(filename, ".lsf",".lms");
+    print(lms_file);
+    save(lms_file);
+    #run;
+    save(lms_file);
 '''
 
 
@@ -89,7 +50,7 @@ def process_scripts(
     else:
         name = f'{script_name}_{index}_{point_str}'
 
-    scripts = [START_SCRIPT, setup_script, PRE_RUN_SAVE_SCRIPT, RUN_SCRIPT, POST_RUN_SAVE_SCRIPT, END_SCRIPT]
+    scripts = [setup_script, END_SCRIPT]
 
     for i in range(len(scripts)):
         scripts[i] = scripts[i].replace("{script_name}", script_name)

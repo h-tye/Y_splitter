@@ -58,7 +58,7 @@ EXIT_CODE=1;
 LAST_MODIFIED_TIME=$(date +%s);
 for (( i = 1; i < 4; i++ )); do
   echo "${i}th attempt";
-  srun fdtd-solutions -run "@name@.sbatch.lsf" -exit >> "${OutFileLocation}" 2>&1 &
+  srun  mode-solutions-batch -trust-script -logall "test_master_file.sbatch.lsf" >> "${OutFileLocation}" 2>&1 &
   process_id=$!
 
   while ps -p $process_id > /dev/null; do

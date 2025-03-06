@@ -1,22 +1,4 @@
 
-    # addpath("../../src/lsf_scripts");
-    # autosaveoff;
-    # # switchtodesign;
-    # # groupscope("::Root Element");
-    # deleteall;
-    if (exist("preserve_me")) {
-        clearexcept(preserve_me);
-    } else {
-        clear;
-    }
-    clearfunctions;
-
-    main__ = "python";
-    # setnamed("::Root Element", "bitrate", 2.5e+10);
-    # setnamed("::Root Element", "time window", 5e-9);
-    # setnamed("::Root Element", "sample rate", 2e+12);
-
-
     clear;
 
     #base simulation, this is a model of what "should" be created by our run_simulation script
@@ -165,25 +147,25 @@
     set('name', 'hole_array');
 
     #define srating hole pattern
-    holeArray = [ 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
-              0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+    holeArray = [ 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0;
+              0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0;
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0;
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0;
               1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1;
               1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1;
+              1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1;
+              1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1;
               1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1;
-              0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1;
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1;
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0;
+              1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0;
               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ];
     holeMatrix = holeArray;
 
@@ -223,30 +205,13 @@
 
 
 
-    # exportnetlist("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.spi");
+    #file name formatting
+    filename = currentscriptname;
+    script_idx = findstring(filename, "Jay");
+    filename = substring(filename, script_idx);
 
-
-    # save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.fsp");
-    # run;
-    # save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.fsp");
-
-
-    # save_properties_results;
-    # results = get_all_results();
-    # #properties = get_all_element_properties("");
-    # matlabsave("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.mat", results);
-
-
-    # switchtodesign;
-    # groupscope("::Root Element");
-    # deleteall;
-    if (exist("preserve_me")) {
-        clearexcept(preserve_me);
-    } else {
-        clear;
-    }
-    clearfunctions;
-
-    # save("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.fsp");
-    # write("../results/simulation__7806f8af_startup/simulation__7806f8af_startup_898096c8.completed.txt", "completed", "overwrite");
-    # exit;
+    lms_file = replacestring(filename, ".lsf",".lms");
+    print(lms_file);
+    save(lms_file);
+    #run;
+    save(lms_file);
