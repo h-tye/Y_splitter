@@ -14,7 +14,7 @@ END_SCRIPT = r'''
     #file name formatting
     filename = currentscriptname;
     #must be whatever filename starts with
-    script_idx = findstring(filename, "simulation");
+    script_idx = length(pwd) + 2;
     filename = substring(filename, script_idx);
 
     lms_file = replacestring(filename, ".lsf",".lms");
