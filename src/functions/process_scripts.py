@@ -13,7 +13,8 @@ from src.lsf_scripts import get_lsf_scripts_path
 END_SCRIPT = r'''
     #file name formatting
     filename = currentscriptname;
-    script_idx = findstring(filename, "Jay");
+    #must be whatever filename starts with
+    script_idx = findstring(filename, "simulation");
     filename = substring(filename, script_idx);
 
     lms_file = replacestring(filename, ".lsf",".lms");
