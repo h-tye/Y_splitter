@@ -28,6 +28,9 @@ mkdir -p $DataDirectoryLocation;
 EXIT_CODE=1;
 
 run_on_exit() {
+  echo "running bash file to execute varfdtd";
+  bash run_individual_sims.sh
+
   echo "";
   echo "####################################### Billing #######################################";
   echo "";
@@ -56,7 +59,7 @@ cd $RunDirectoryLocation || exit 1;
 
 EXIT_CODE=1;
 LAST_MODIFIED_TIME=$(date +%s);
-for (( i = 1; i < 4; i++ )); do
+for (( i = 1; i < 2; i++ )); do
   echo "${i}th attempt";
   srun  mode-solutions-batch -trust-script -logall "@name@.sbatch.lsf" >> "${OutFileLocation}" 2>&1 &
   process_id=$!
