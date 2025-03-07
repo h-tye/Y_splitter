@@ -211,7 +211,7 @@ SETUP_SCRIPT = r'''
             set('z span', 222e-9);
             addtogroup('hole_array');
 
-            if (holeMatrix(i + 1, j + 1) == 0)
+            if (holeArray(i + 1, j + 1) == 0)
             {
                 set('material', 'Si (Silicon) - Palik');
             }
