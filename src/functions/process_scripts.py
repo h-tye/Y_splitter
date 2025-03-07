@@ -16,8 +16,12 @@ END_SCRIPT = r'''
     #must be whatever filename starts with
     script_idx = length(pwd) + 2;
     filename = substring(filename, script_idx);
-
     lms_file = replacestring(filename, ".lsf",".lms");
+
+    #save configuartion to text file
+    txt_file = replacestring(filename, ".lsf", ".txt");
+    write(txt_file, holeMatrix, "overwrite");
+
     print(lms_file);
     save(lms_file);
     #run;

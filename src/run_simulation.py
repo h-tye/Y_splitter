@@ -181,7 +181,13 @@ SETUP_SCRIPT = r'''
 
     #define srating hole pattern
     holeArray = {configuration};
-    holeMatrix = holeArray;
+    holeMatrix = "";
+
+    for (i = 1:length(holeArray(:,1))) {  # Loop over rows
+        row_str = num2str(holeArray(i, :));  # Convert row to string
+        holeMatrix = holeMatrix + row_str + "; ";  # Append row with separator
+    }
+
 
     #select and delete old cirles
     select('hole_array');
