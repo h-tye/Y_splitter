@@ -41,7 +41,18 @@ for(k = 0;k < 2; k = k + 1) {
 	write(load_and_run_filename, "T_source = getresult(\"mon_source\",\"T\");","append");
 	write(load_and_run_filename, "T_thru = getresult(\"mon_thru\",\"T\");","append");
 	write(load_and_run_filename, "T_cross = getresult(\"mon_cross\",\"T\");","append");
-	write(load_and_run_filename, "matlabsave(\"WaveSimData.mat\",T_source,T_thru,T_cross);","append");
+	write(load_and_run_filename, "T_source_avg = (T_source.T(2) + T_source.T(3) + T_source.T(4))/3;","append");
+	write(load_and_run_filename, "T_thru_avg = (T_thru.T(2) + T_thru.T(3) + T_thru.T(4))/3;","append");
+	write(load_and_run_filename, "T_cross_avg = (T_cross.T(2) + T_cross.T(3) + T_cross.T(4))/3;","append");
+	write(load_and_run_filename, "T_thru_ideal = 2/3;","append");
+	write(load_and_run_filename, "T_cross_ideal = 1/3;","append");
+	write(load_and_run_filename, "FOM = 1 - (abs(T_thru_avg - T_thru_ideal) + abs(T_cross_avg - T_cross_ideal));","append");
+	write(load_and_run_filename, "FOM = num2str(FOM);","append");
+	write(load_and_run_filename, "filename = currentscriptname;","append");
+	write(load_and_run_filename, "script_idx = length(pwd) + 2;","append");
+	write(load_and_run_filename, "filename = substring(filename, script_idx);","append");
+	write(load_and_run_filename, "txt_file = replacestring(filename, \".lsf\",\".txt\");","append");
+	write(load_and_run_filename, "write(txt_file, FOM, \"append\");","append");	
 
 	#generate corresponding slurm file to run the load and run lsf file
 	# Define the SLURM script content as a string
